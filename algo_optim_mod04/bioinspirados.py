@@ -122,7 +122,7 @@ def SELECCION(scaled_objv, N, prob_cruza):
 
 
 
-def genetico_binario(f, N : int, n_variables : int, i_sup_vec : list, i_inf_vec : list, precision: float, generaciones : int, prob_cruza : float):
+def genetico_binario(f, N : int, n_variables : int, ub : list, lb : list, precision: float, generaciones : int, prob_cruza : float):
     '''
     ------------------------------------------
                         
@@ -132,8 +132,8 @@ def genetico_binario(f, N : int, n_variables : int, i_sup_vec : list, i_inf_vec 
         * f             - Función a minimizar
         * N             - Número de individuos en la población
         * n_variables   - Número de variables de decisión
-        * i_sup_vec     - Lista de límites superiores de las variables de decisión
-        * i_inf_vec     - Lista de límites inferiores de las variables de decisión
+        * ub            - Lista de límites superiores de las variables de decisión
+        * lb            - Lista de límites inferiores de las variables de decisión
         * precision     - Precisión de las variables de decisión
         * generaciones  - Cantidad máxima de generaciones 
         * prob_cruza    - Probabilidad de cruza
@@ -150,7 +150,7 @@ def genetico_binario(f, N : int, n_variables : int, i_sup_vec : list, i_inf_vec 
     fitness_values = []
 
     #### Inicializamos la población
-    poblacion = [ Individuo(f, l_sup_vec, l_inf_vec, n_variables, precision) for i in range(N)]
+    poblacion = [ Individuo(f, ub, lb, n_variables, precision) for i in range(N)]
 
     #### Iniciamos el ciclo evolutivo
     print("Evaluación de la población inicial")
@@ -199,7 +199,7 @@ def genetico_binario(f, N : int, n_variables : int, i_sup_vec : list, i_inf_vec 
             genotipo_cruza = poblacion[id_ind_uno].cruza(poblacion[id_ind_dos])
 
             nueva_poblacion.append(
-                Individuo(f, l_sup_vec, l_inf_vec, n_variables, precision, genotipo = genotipo_cruza)
+                Individuo(f, ub, lb, n_variables, precision, genotipo = genotipo_cruza)
             )
 
         ##### MUTACIÓN de la población
