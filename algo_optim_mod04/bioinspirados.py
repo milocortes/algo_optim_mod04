@@ -3,6 +3,9 @@ import random
 import numpy as np
 import pandas as pd
 
+# Para hacer el muestreo por Latin Hypecube
+from scipy.stats.qmc import LatinHypercube,scale
+
 def length_variable(l_sup: int, l_inf: int , precision: int):
     return ceil(log2((l_sup - l_inf)*10**precision))
 
