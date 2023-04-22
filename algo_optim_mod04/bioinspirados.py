@@ -102,7 +102,7 @@ def SELECCION(scaled_objv, N, prob_cruza):
         pareja = []
 
         for p in range(2):
-            if p == 1:            
+            if p == 0:            
                 aleatorio = random.random()
                 pareja_id = np.argwhere(suma_acumulada >= aleatorio).ravel()[0]
                 pareja.append(ordena_proba_seleccion[pareja_id][0])
@@ -122,7 +122,7 @@ def SELECCION(scaled_objv, N, prob_cruza):
 
 
 
-def genetico_binario(f, N : int, n_variables : int, ub : list, lb : list, precision: float, generaciones : int, prob_cruza : float):
+def genetico_binario(f, N : int, generaciones : int, n_variables : int,  ub : list, lb : list, precision: float, prob_cruza : float):
     '''
     ------------------------------------------
                         
@@ -131,11 +131,11 @@ def genetico_binario(f, N : int, n_variables : int, ub : list, lb : list, precis
     # Inputs:
         * f             - Función a minimizar
         * N             - Número de individuos en la población
+        * generaciones  - Cantidad máxima de generaciones 
         * n_variables   - Número de variables de decisión
         * ub            - Lista de límites superiores de las variables de decisión
         * lb            - Lista de límites inferiores de las variables de decisión
         * precision     - Precisión de las variables de decisión
-        * generaciones  - Cantidad máxima de generaciones 
         * prob_cruza    - Probabilidad de cruza
 
     # Output
@@ -149,6 +149,7 @@ def genetico_binario(f, N : int, n_variables : int, ub : list, lb : list, precis
     mejor_valor = 1e15
     fitness_values = []
 
+    print(ub)
     #### Inicializamos la población
     poblacion = [ Individuo(f, ub, lb, n_variables, precision) for i in range(N)]
 
