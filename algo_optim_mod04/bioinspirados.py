@@ -139,8 +139,9 @@ def genetico_binario(f, N : int, generaciones : int, n_variables : int,  ub : li
         * prob_cruza    - Probabilidad de cruza
 
     # Output
+        * mejor_vector   - Mejor solución encontrada
+        * mejor_valor    - Mejor valor de la función objetivo
         * fitness_values - Mejores valores de fitness  
-        * best_vector    - Mejor solución encontrada
     '''
 
     ## Definimos los parámetros del algoritmo genético
@@ -230,7 +231,7 @@ def genetico_binario(f, N : int, generaciones : int, n_variables : int,  ub : li
         
         fitness_values.append(mejor_valor)
 
-    return fitness_values, mejor_vector
+    return mejor_vector, mejor_valor, fitness_values
 
 
 # Definimos la clase Particle
@@ -259,6 +260,7 @@ def PSO(f, pop_size : int, generaciones : int, n_var : int, ub : list, lb : list
         
     # Output
         * x_best         - Mejor solución encontrada
+        * y_best         - Mejor valor de la función objetivo
         * fitness_values - Mejores valores de fitness
     '''   
     # LatinHypercube sampling
@@ -351,4 +353,4 @@ def PSO(f, pop_size : int, generaciones : int, n_var : int, ub : list, lb : list
 
         fitness_values.append(y_best)
 
-    return fitness_values ,x_best
+    return x_best, y_best, fitness_values 
