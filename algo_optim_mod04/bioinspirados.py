@@ -143,7 +143,7 @@ def genetico_binario(f, N : int, n_variables : int, i_sup_vec : list, i_inf_vec 
     ## Definimos los parámetros del algoritmo genético
 
     mejor_individuo = 0
-    mejor_valor = 100000000000000
+    mejor_valor = 1e15
     fitness_values = []
 
     #### Inicializamos la población
@@ -259,7 +259,7 @@ def PSO(f, pop_size : int, generaciones : int, n_var : int, ub : list, lb : list
     '''   
     # LatinHypercube sampling
     # Muestreamos el espacio de búsqueda
-    
+
     engine = LatinHypercube(d=n_var)
     sample = engine.random(n=pop_size)
 
