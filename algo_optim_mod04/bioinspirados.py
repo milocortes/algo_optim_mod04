@@ -171,11 +171,13 @@ def genetico_binario(f, N : int, generaciones : int, n_variables : int,  ub : li
         objv.append(individuo.objv)
 
     for it in range(generaciones):
-        print("-----------------------------")
-        print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
-        print("        Generación {}".format(it))
-        print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
-        print("-----------------------------")
+
+        if it % 20 == 0:
+            print("-----------------------------")
+            print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
+            print("        Generación {}".format(it))
+            print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
+            print("-----------------------------")
 
         ### APTITUD de la población
         #### Obtenemos la aptitud de cada individuo
@@ -305,11 +307,12 @@ def PSO(f, pop_size : int, generaciones : int, n_var : int, ub : list, lb : list
 
     for k in range(generaciones):
         
-        print("-----------------------------")
-        print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
-        print("        Iteración {}".format(k))
-        print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
-        print("-----------------------------")
+        if k % 20 == 0:
+            print("-----------------------------")
+            print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
+            print("        Iteración {}".format(k))
+            print("-%%%%%%%%%%%%%%%%%%%%%%%%%%%-")
+            print("-----------------------------")
         
         for P in pob:
             # Actualiza velocidad de la partícula
